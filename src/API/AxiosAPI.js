@@ -9,3 +9,10 @@ export const fetchTrendingMovies = async () => {
   const result = await axios.get(`trending/all/day?api_key=${API_KEY}`);
   return result.data;
 };
+
+export const fetchMovieBySearch = async query => {
+  const result = await axios.get(
+    `search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=1&include_adult=false`
+  );
+  return result.data.results;
+};
