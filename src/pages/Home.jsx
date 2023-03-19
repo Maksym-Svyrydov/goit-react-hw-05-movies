@@ -1,12 +1,18 @@
-import { useEffect, useState } from 'react';
+import { fetchTrendingMovies } from '../API/AxiosAPI';
+import { useState, useEffect } from 'react';
+import MoviesList from 'components/MovieList';
 
 const Home = () => {
-  useEffect();
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    fetchTrendingMovies().then(result => {
+      setMovies(result.results);
+    });
+  }, []);
   return (
     <div class="">
-      <ul>
-        <li></li>
-      </ul>
+      <h1>Trending movies</h1>
+      <MoviesList movies={movies} />
     </div>
   );
 };

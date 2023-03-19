@@ -1,17 +1,17 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
+// import Home from 'pages/Home';
+// import MoviesList from './MovieList';
 export const SharedLayout = () => {
   return (
-    <Container>
-      <Header>
-        <nav>
-          <Link to="/" end>
-            Home
-          </Link>
-          <Link to="/movies">About</Link>
-        </nav>
-      </Header>
+    <div>
+      <nav>
+        <NavLink to="/" end>
+          Home
+        </NavLink>
+        <NavLink to="/movies">Movies</NavLink>
+      </nav>
       <Outlet />
-    </Container>
+    </div>
   );
 };
 export default SharedLayout;
