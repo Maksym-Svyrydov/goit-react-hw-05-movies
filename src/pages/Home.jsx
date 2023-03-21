@@ -12,7 +12,7 @@ const Home = () => {
     });
   }, []);
   return (
-    <div class="" state={{ from: location }}>
+    <div state={{ from: location }}>
       <h1>Trending movies</h1>
       <MoviesList movies={movies} />
     </div>

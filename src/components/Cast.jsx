@@ -1,0 +1,41 @@
+import { useEffect, useState } from 'react';
+import { fetchCast } from '../API/AxiosAPI';
+import { useParams } from 'react-router-dom';
+
+const Cast = () => {
+  const [cast, setCast] = useState([]);
+  const { movieId } = useParams();
+  console.log(movieId);
+
+  useEffect(() => {
+    fetchCast(movieId).then(setCast);
+  }, [movieId]);
+
+  if (!cast) {
+    return;
+  }
+  return (
+    <div>
+      <ul>
+        {cast.map(actor => (
+          <li key={actor.id}>
+            <img
+              key={actor.id}
+              src={
+                actor.profile_path
+                  ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
+                  : `http://www.suryalaya.org/images/no_image.jpg`
+              }
+              alt={actor.profile_path}
+              loading="lazy"
+              width={120}
+              height={180}
+            />
+            {actor.name}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+export default Cast;
