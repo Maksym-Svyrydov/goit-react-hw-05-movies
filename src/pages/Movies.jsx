@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchMovieBySearch } from '../API/AxiosAPI';
 import MoviesList from '../components/MovieList';
+import { Container, Form, Input, Button } from '../pages/Movies.styled';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -22,20 +23,20 @@ const Movies = () => {
     fetchMovieBySearch(query).then(setMovies);
   }, [searchParams]);
   return (
-    <div>
-      <form onSubmit={handleInputSubmit}>
-        <input
+    <Container>
+      <Form onSubmit={handleInputSubmit}>
+        <Input
           type="text"
           name="search"
-          placeholder="Fill in film name"
+          placeholder="Search your film :)"
           onChange={handleInputSearh}
           value={query}
         />
 
-        <button type="submit">Search film</button>
-      </form>
+        <Button type="submit">Search film</Button>
+      </Form>
       <MoviesList movies={movies} />
-    </div>
+    </Container>
   );
 };
 export default Movies;

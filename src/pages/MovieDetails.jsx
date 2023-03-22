@@ -2,6 +2,17 @@ import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { fetchMovieById } from '../API/AxiosAPI';
+import {
+  Container,
+  GoBack,
+  FilmCard,
+  Title,
+  FilmImg,
+  OwerviewWrapper,
+  LinkWrapper,
+  Cast,
+  Reviews,
+} from './MovieDetails.styled';
 
 const movieImgBaseUrl = 'https://image.tmdb.org/t/p/w500/';
 const MovieDetails = () => {
@@ -20,28 +31,55 @@ const MovieDetails = () => {
   }
 
   return (
-    <div>
-      <Link to={backLinkHref}>Go BACK</Link>
-      <div>
-        <p>{movie.title}</p>
-        <img src={`${movieImgBaseUrl + movie.poster_path}`} alt={movie.title} />
-      </div>
-      <div>
-        <p>Overview</p>
-        <p>{movie.overview}</p>
-      </div>
-
-      <div>
-        <Link to="cast" state={location.state}>
-          Cast
+    <Container>
+      <GoBack>
+        <Link
+          style={{
+            textDecoration: 'none',
+          }}
+          to={backLinkHref}
+        >
+          Go BACK
         </Link>
+      </GoBack>
+      <Title>{movie.title}</Title>
+      <FilmCard>
+        <FilmImg
+          src={`${movieImgBaseUrl + movie.poster_path}`}
+          alt={movie.title}
+        />
+        <OwerviewWrapper>
+          <p>Overview</p>
+          <p>{movie.overview}</p>
+        </OwerviewWrapper>
+      </FilmCard>
 
-        <Link to="reviews" state={location.state}>
-          Reviews
-        </Link>
-      </div>
+      <LinkWrapper>
+        <Cast>
+          <Link
+            style={{
+              textDecoration: 'none',
+            }}
+            to="cast"
+            state={location.state}
+          >
+            Cast
+          </Link>
+        </Cast>
+        <Reviews>
+          <Link
+            style={{
+              textDecoration: 'none',
+            }}
+            to="reviews"
+            state={location.state}
+          >
+            Reviews
+          </Link>
+        </Reviews>
+      </LinkWrapper>
       <Outlet />
-    </div>
+    </Container>
   );
 };
 export default MovieDetails;

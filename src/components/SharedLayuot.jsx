@@ -1,17 +1,40 @@
 import { Outlet, NavLink } from 'react-router-dom';
-// import Home from 'pages/Home';
-// import MoviesList from './MovieList';
+import {
+  Layout,
+  NavContainer,
+  NavItem,
+  NavList,
+} from '../components/Sharedlayout.styled';
 export const SharedLayout = () => {
   return (
-    <div>
-      <nav>
-        <NavLink to="/" end>
-          Home
-        </NavLink>
-        <NavLink to="/movies">Movies</NavLink>
-      </nav>
+    <Layout>
+      <NavContainer>
+        <NavList>
+          <NavItem>
+            <NavLink
+              style={{
+                textDecoration: 'none',
+              }}
+              to="/"
+              end
+            >
+              Home
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              style={{
+                textDecoration: 'none',
+              }}
+              to="/movies"
+            >
+              Movies
+            </NavLink>
+          </NavItem>
+        </NavList>
+      </NavContainer>
       <Outlet />
-    </div>
+    </Layout>
   );
 };
 export default SharedLayout;

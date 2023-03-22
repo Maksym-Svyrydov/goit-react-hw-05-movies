@@ -2,6 +2,7 @@ import { fetchTrendingMovies } from '../API/AxiosAPI';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import MoviesList from 'components/MovieList';
+import { Titile } from '../components/Sharedlayout.styled';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -13,7 +14,7 @@ const Home = () => {
   }, []);
   return (
     <div state={{ from: location }}>
-      <h1>Trending movies</h1>
+      <Titile>Trending movies</Titile>
       <MoviesList movies={movies} />
     </div>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchCast } from '../API/AxiosAPI';
 import { useParams } from 'react-router-dom';
+import { CastWrapper, CastList, CastItem, CastImg } from './Cast.styled';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -15,11 +16,11 @@ const Cast = () => {
     return;
   }
   return (
-    <div>
-      <ul>
+    <CastWrapper>
+      <CastList>
         {cast.map(actor => (
-          <li key={actor.id}>
-            <img
+          <CastItem key={actor.id}>
+            <CastImg
               key={actor.id}
               src={
                 actor.profile_path
@@ -32,10 +33,10 @@ const Cast = () => {
               height={180}
             />
             {actor.name}
-          </li>
+          </CastItem>
         ))}
-      </ul>
-    </div>
+      </CastList>
+    </CastWrapper>
   );
 };
 export default Cast;
