@@ -8,20 +8,27 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
+
   const handleInputSearh = e => {
     setQuery(e.target.value);
   };
+
   const handleInputSubmit = e => {
     e.preventDefault();
+    if (query === '') {
+      return setSearchParams({});
+    }
     setSearchParams({ query });
   };
+
   useEffect(() => {
-    const query = searchParams.get('query');
-    if (!query) {
+    const query = searchParams.get('query') ?? '';
+    if (query === {}) {
       return;
     }
     fetchMovieBySearch(query).then(setMovies);
   }, [searchParams]);
+
   return (
     <Container>
       <Form onSubmit={handleInputSubmit}>

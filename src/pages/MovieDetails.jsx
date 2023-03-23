@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { fetchMovieById } from '../API/AxiosAPI';
@@ -21,7 +21,7 @@ const MovieDetails = () => {
   // console.log(movie);
 
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = useRef(location.state?.from ?? '/movies/:movieId');
 
   useEffect(() => {
     fetchMovieById(movieId).then(result => setMovie(result));
@@ -37,7 +37,7 @@ const MovieDetails = () => {
           style={{
             textDecoration: 'none',
           }}
-          to={backLinkHref}
+          to={backLinkHref.current}
         >
           Go BACK
         </Link>
