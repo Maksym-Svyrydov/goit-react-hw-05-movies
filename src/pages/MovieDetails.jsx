@@ -36,6 +36,9 @@ const MovieDetails = () => {
         <Link
           style={{
             textDecoration: 'none',
+            display: 'block',
+            position: 'relative',
+            padding: '6px',
           }}
           to={backLinkHref.current}
         >

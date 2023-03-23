@@ -40,7 +40,8 @@ export const NavItem = styled.div`
   border-radius: 4px;
   margin: 5px 10px;
   padding: 4px;
-
+  display: block;
+  position: relative;
   justify-content: center;
   align-items: center;
 `;

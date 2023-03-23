@@ -6,15 +6,19 @@ const MoviesList = ({ movies }) => {
 
   return (
     <List>
-      {movies.map(movie => (
-        <Item key={movie.id}>
-          <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-            {movie.poster_path && (
-              <Img src={`${PosterUrl + movie.poster_path}`} alt={movie.title} />
-            )}
-          </Link>
-        </Item>
-      ))}
+      {movies.length > 0 &&
+        movies.map(movie => (
+          <Item key={movie.id}>
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+              {!!movie.poster_path && (
+                <Img
+                  src={`${PosterUrl + movie.poster_path}`}
+                  alt={movie.title}
+                />
+              )}
+            </Link>
+          </Item>
+        ))}
     </List>
   );
 };
