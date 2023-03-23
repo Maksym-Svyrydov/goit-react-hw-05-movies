@@ -3,7 +3,7 @@ import { fetchCast } from '../API/AxiosAPI';
 import { useParams } from 'react-router-dom';
 import { CastWrapper, CastList, CastItem, CastImg } from './Cast.styled';
 
-const Cast = () => {
+export const Cast = () => {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
   console.log(movieId);
@@ -39,4 +39,4 @@ const Cast = () => {
     </CastWrapper>
   );
 };
-export default Cast;
+// export default Cast;

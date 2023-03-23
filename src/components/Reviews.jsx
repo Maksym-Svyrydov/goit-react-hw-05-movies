@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchReviews } from '../API/AxiosAPI';
 import { useParams } from 'react-router-dom';
 
-const Reviews = () => {
+export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
   console.log(movieId);
@@ -28,4 +28,4 @@ const Reviews = () => {
     </div>
   );
 };
-export default Reviews;
+// export default Reviews;
