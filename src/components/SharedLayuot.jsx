@@ -6,6 +6,7 @@ import {
   NavItem,
   NavList,
 } from '../components/Sharedlayout.styled';
+
 export const SharedLayout = () => {
   return (
     <Layout>

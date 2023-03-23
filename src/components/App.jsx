@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { SharedLayout } from './SharedLayuot';
+// import { ToastContainer } from 'react-toastify';
 
 // import  from './Cast';
 // import  from './Revie ws';
@@ -34,6 +35,7 @@ export const App = () => {
           <Route path="reviews" element={<Reviews />} />
           <Route path="*" />
         </Route>
+        {/* <ToastContainer autoClose={3500} /> */}
         {/* <Route path="*" element={<NotFound />} /> */}
       </Route>
     </Routes>

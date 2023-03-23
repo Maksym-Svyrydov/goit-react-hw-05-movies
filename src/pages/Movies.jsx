@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { fetchMovieBySearch } from '../API/AxiosAPI';
 import MoviesList from '../components/MovieList';
 import { Container, Form, Input, Button } from '../pages/Movies.styled';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -15,8 +18,8 @@ const Movies = () => {
 
   const handleInputSubmit = e => {
     e.preventDefault();
-    if (query === '') {
-      return setSearchParams({});
+    if (query.trim() === '') {
+      return toast.error('Введите слово для поиска') || setSearchParams({});
     }
     setSearchParams({ query });
   };
@@ -43,6 +46,7 @@ const Movies = () => {
         <Button type="submit">Search film</Button>
       </Form>
       <MoviesList movies={movies} />
+      <ToastContainer autoClose={3500} />
     </Container>
   );
 };
